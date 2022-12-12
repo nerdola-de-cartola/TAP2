@@ -5,12 +5,11 @@
 
 using namespace std;
 
-int max_team(const vector<int> &arr, int start, int end);
-
 int main(void) {
-   vector<int> students;
-   int students_number;
-   int i;
+   vector<unsigned int> students;
+   vector<unsigned int> teams;
+   unsigned int students_number, max_team;
+   unsigned int i, j;
 
    cin >> students_number;
    students.reserve(students_number);
@@ -24,22 +23,23 @@ int main(void) {
 
    sort(students.begin(), students.end());
 
-   cout << max_team(students, 0, students_number - 1) << endl;
-
-   return 0;
-}
-
-int max_team(const vector<int> &arr, int start, int end) {
-   if(start == end) return 1;
-
-   int team_dif = fabs(arr[start] - arr[end]);
-
-   if(team_dif <= 5) {
-      return (end - start + 1);
+   i = 0;
+   j = 0;
+   while(j < students_number) {
+      if(students[j] - students[i] <= 5) {
+         teams.push_back(j - i + 1);
+         j++;
+      } else {
+         i++;
+      }
    }
 
-   int walk_start = max_team(arr, start+1, end);
-   int walk_end = max_team(arr, start, end-1);
+   max_team = 0;
+   for(i = 0; i < teams.size(); i++) {
+      if(teams[i] > max_team) max_team = teams[i];
+   }
 
-   return walk_start >= walk_end ? walk_start : walk_end;
+   cout << max_team << endl;
+
+   return 0;
 }
