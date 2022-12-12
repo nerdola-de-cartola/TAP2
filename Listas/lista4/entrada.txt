@@ -1,0 +1,4 @@
+1
+2 15
+Acetaminophen 20
+Loratadine 30
