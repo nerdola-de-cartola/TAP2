@@ -1,4 +1,5 @@
 # TAP2
+ Repositório dedicado a minha segunda passagem pela matéria de Tópicos Avançados em programação
  
 ## lista 1
 https://vjudge.net/contest/522288
